@@ -19,7 +19,7 @@ const PROJECTS = [
       'Modelo de predicción de precios para cacaoteros y cafeteros en Santander, Colombia. Datos: SIPSA/DANE, Agronet, IDEAM, Fedecacao. Proyecto del programa GCI World del Matsuo-Iwasawa Lab, Universidad de Tokyo.',
     tags: ['ML', 'Python', 'SIPSA', 'Pandas', 'Time Series'],
     link: null,
-    repoLink: null,
+    repoLink: 'https://github.com/luistriana032006/agricultural-price-prediction/tree/main',
     stat: 'GCI World · U. Tokyo',
     inDev: true,
   },
