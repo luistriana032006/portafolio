@@ -17,20 +17,20 @@ function TikTokIcon({ size = 14 }: { size?: number }) {
 const LINKS = [
   {
     label: 'GitHub',
-    value: 'github.com/LuisMiTR',
-    href: 'https://github.com/LuisMiTR',
+    value: 'github.com/luistriana032006',
+    href: 'https://github.com/luistriana032006',
     icon: Github,
   },
   {
     label: 'LinkedIn',
     value: 'linkedin.com/in/luismigueltr',
-    href: 'https://linkedin.com/in/luismigueltr',
+    href: 'https://www.linkedin.com/in/luismigueltr',
     icon: Linkedin,
   },
   {
     label: 'TikTok',
-    value: 'tiktok.com/@luismigueltr',
-    href: 'https://www.tiktok.com/@luismigueltr',
+    value: 'tiktok.com/@luisdotbit',
+    href: 'https://www.tiktok.com/@luisdotbit',
     icon: TikTokIcon,
   },
   {
@@ -63,7 +63,7 @@ export function Contact() {
               se alineen con mi camino hacia MBZUAI 2027.
             </p>
             <a
-              href="https://linkedin.com/in/luismigueltr"
+              href="https://www.linkedin.com/in/luismigueltr"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 border border-primary bg-primary text-primary-foreground font-sans font-semibold text-sm px-6 py-3 tracking-wide uppercase hover:bg-primary/90 transition-colors"

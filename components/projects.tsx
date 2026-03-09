@@ -1,4 +1,4 @@
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight, Github } from 'lucide-react'
 
 const PROJECTS = [
   {
@@ -8,7 +8,9 @@ const PROJECTS = [
       'Asistente de IA local con FastAPI + Spring Boot + React. Tres pilares: Inteligencia Local (Ollama), Datos Estructurados (APIs), Búsqueda Web. Diseñado para correr 100% offline en hardware personal.',
     tags: ['Python', 'FastAPI', 'Ollama', 'React', 'Spring Boot'],
     link: null,
+    repoLink: 'https://github.com/luistriana032006/trident-ai',
     stat: null,
+    inDev: true,
   },
   {
     index: '02',
@@ -17,7 +19,9 @@ const PROJECTS = [
       'Modelo de predicción de precios para cacaoteros y cafeteros en Santander, Colombia. Datos: SIPSA/DANE, Agronet, IDEAM, Fedecacao. Proyecto del programa GCI World del Matsuo-Iwasawa Lab, Universidad de Tokyo.',
     tags: ['ML', 'Python', 'SIPSA', 'Pandas', 'Time Series'],
     link: null,
+    repoLink: null,
     stat: 'GCI World · U. Tokyo',
+    inDev: true,
   },
   {
     index: '03',
@@ -26,7 +30,9 @@ const PROJECTS = [
       'Sistema de Liquidación de Aportes a Seguridad Social — REST API en Spring Boot para cálculo de contribuciones al sistema de seguridad social colombiano. Presentado a Aportes en Línea.',
     tags: ['Java', 'Spring Boot', 'REST API', 'Colombia'],
     link: null,
+    repoLink: 'https://github.com/luistriana032006/slas-sistema-de-liquidacion-de-aportes',
     stat: 'Presentado a Aportes en Línea',
+    inDev: false,
   },
 ]
 
@@ -60,17 +66,37 @@ export function Projects() {
                 <h3 className="font-sans font-bold text-lg text-foreground leading-tight">
                   {project.name}
                 </h3>
-                {project.link && (
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="shrink-0 text-muted-foreground hover:text-primary transition-colors"
-                    aria-label={`Ver ${project.name}`}
-                  >
-                    <ArrowUpRight size={16} />
-                  </a>
-                )}
+                <div className="flex items-center gap-1.5 shrink-0">
+                  {project.repoLink ? (
+                    <a
+                      href={project.repoLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                      aria-label={`Repositorio de ${project.name}`}
+                    >
+                      <Github size={15} />
+                    </a>
+                  ) : (
+                    <span
+                      className="font-mono text-[10px] text-muted-foreground border border-border bg-secondary px-2 py-0.5 uppercase tracking-wide cursor-default"
+                      title="Repositorio no disponible aún"
+                    >
+                      Próximamente
+                    </span>
+                  )}
+                  {project.link && (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                      aria-label={`Ver ${project.name}`}
+                    >
+                      <ArrowUpRight size={16} />
+                    </a>
+                  )}
+                </div>
               </div>
 
               {/* Description */}
@@ -78,14 +104,19 @@ export function Projects() {
                 {project.description}
               </p>
 
-              {/* Stat badge */}
-              {project.stat && (
-                <div className="mb-5">
+              {/* Badges row */}
+              <div className="flex flex-wrap items-center gap-2 mb-5">
+                {project.inDev && (
+                  <span className="font-mono text-xs text-amber-400 border border-amber-400/30 bg-amber-400/10 px-2.5 py-1">
+                    En desarrollo
+                  </span>
+                )}
+                {project.stat && (
                   <span className="font-mono text-xs text-primary border border-primary/30 bg-primary/10 px-2.5 py-1">
                     {project.stat}
                   </span>
-                </div>
-              )}
+                )}
+              </div>
 
               {/* Tags */}
               <div className="flex flex-wrap gap-1.5">
