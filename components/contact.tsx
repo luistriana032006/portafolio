@@ -24,7 +24,7 @@ const LINKS = [
   {
     label: 'LinkedIn',
     value: 'linkedin.com/in/luismigueltr',
-    href: 'https://www.linkedin.com/in/luismigueltr',
+    href: 'https://www.linkedin.com/in/luis-triana-2917202a2/',
     icon: Linkedin,
   },
   {
@@ -63,7 +63,7 @@ export function Contact() {
               se alineen con mi camino hacia MBZUAI 2027.
             </p>
             <a
-              href="https://www.linkedin.com/in/luismigueltr"
+              href="https://www.linkedin.com/in/luis-triana-2917202a2/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 border border-primary bg-primary text-primary-foreground font-sans font-semibold text-sm px-6 py-3 tracking-wide uppercase hover:bg-primary/90 transition-colors"
