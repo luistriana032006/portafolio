@@ -10,9 +10,9 @@ const RESEARCH = [
   },
   {
     index: '02',
-    title: 'Education in Colombia: A Data Analysis',
+    title: 'Del Colegio a la Programación: Un Viaje de Desaprendizaje y Transformación Educativo',
     description:
-      'Structural analysis of gaps in the Colombian education system using public data sources.',
+      'Reflexión personal sobre lo que cuesta aprender tecnología viniendo de una educación formal en Colombia — y todo lo que hay que desaprender en el camino.',
     file: '/docs/analisis-educacion-colombia.pdf',
   },
 ]
