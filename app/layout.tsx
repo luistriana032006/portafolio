@@ -17,12 +17,26 @@ export const metadata: Metadata = {
   title: 'Luis Miguel Triana Rueda — Software Engineer & ML Student',
   description:
     'Portfolio de Luis Miguel Triana Rueda, Ingeniero de Software y estudiante de ML Engineering. Construyendo IA para agricultura colombiana. MBZUAI 2027.',
-  generator: 'v0.app',
-  keywords: ['Software Engineer', 'ML Engineering', 'Colombia', 'MBZUAI', 'AI', 'Java', 'Python', 'FastAPI'],
+  keywords: ['Luis Miguel Triana Rueda', 'Luis Triana', 'Software Engineer', 'ML Engineering', 'Colombia', 'MBZUAI', 'AI', 'Java', 'Python', 'FastAPI'],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
   openGraph: {
     title: 'Luis Miguel Triana Rueda — Software Engineer & ML Student',
     description: 'Portfolio de Luis Miguel Triana Rueda, construyendo IA para agricultura colombiana.',
     type: 'website',
+    url: 'https://luistriana.vercel.app',
+    siteName: 'Luis Miguel Triana Rueda',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Luis Miguel Triana Rueda — Software Engineer & ML Student',
+    description: 'Portfolio de Luis Miguel Triana Rueda, construyendo IA para agricultura colombiana.',
   },
 }
 
