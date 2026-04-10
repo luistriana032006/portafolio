@@ -15,6 +15,13 @@ const RESEARCH = [
       'Reflexión personal sobre lo que cuesta aprender tecnología viniendo de una educación formal en Colombia — y todo lo que hay que desaprender en el camino.',
     file: '/docs/analisis-educacion-colombia.pdf',
   },
+  {
+    index: '03',
+    title: 'OpenClaw Setup on Ubuntu',
+    description:
+      'Guía técnica completa para instalar y configurar OpenClaw en Ubuntu 24 — agentes autónomos de IA con integración a Telegram, múltiples modelos vía OpenRouter y búsqueda web en tiempo real con Gemini.',
+    file: '/docs/openclaw-setup-ubuntu-luis-triana (1).pdf',
+  },
 ]
 
 export function Research() {
