@@ -3,13 +3,13 @@
 import { useState, useEffect } from 'react'
 
 const NAV_LINKS = [
-  { label: 'Sobre Mí', href: '#sobre-mi' },
-  { label: 'Stack', href: '#stack' },
-  { label: 'Proyectos', href: '#proyectos' },
-  { label: 'Research', href: '#research' },
+  { label: 'Sobre Mí', href: '/#sobre-mi' },
+  { label: 'Stack', href: '/#stack' },
+  { label: 'Proyectos', href: '/#proyectos' },
+  { label: 'Research', href: '/#research' },
   { label: 'Tutoriales', href: '/tutoriales' },
-  { label: 'Logros', href: '#logros' },
-  { label: 'Contacto', href: '#contacto' },
+  { label: 'Logros', href: '/#logros' },
+  { label: 'Contacto', href: '/#contacto' },
 ]
 
 export function Nav() {
