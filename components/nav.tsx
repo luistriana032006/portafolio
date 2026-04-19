@@ -7,7 +7,7 @@ const NAV_LINKS = [
   { label: 'Stack', href: '#stack' },
   { label: 'Proyectos', href: '#proyectos' },
   { label: 'Research', href: '#research' },
-  { label: 'Tutoriales', href: '#tutoriales' },
+  { label: 'Tutoriales', href: '/tutoriales' },
   { label: 'Logros', href: '#logros' },
   { label: 'Contacto', href: '#contacto' },
 ]

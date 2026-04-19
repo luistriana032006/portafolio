@@ -4,7 +4,6 @@ import { About } from '@/components/about'
 import { Skills } from '@/components/skills'
 import { Projects } from '@/components/projects'
 import { Research } from '@/components/research'
-import { Tutorials } from '@/components/tutorials'
 import { Timeline } from '@/components/timeline'
 import { Contact } from '@/components/contact'
 
@@ -17,7 +16,6 @@ export default function Page() {
       <Skills />
       <Projects />
       <Research />
-      <Tutorials />
       <Timeline />
       <Contact />
     </main>
