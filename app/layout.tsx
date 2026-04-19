@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     title: 'Luis Miguel Triana Rueda — Software Engineer & ML Student',
     description: 'Portfolio de Luis Miguel Triana Rueda, construyendo IA para agricultura colombiana.',
     type: 'website',
-    url: 'https://luistriana.vercel.app',
+    url: 'https://luistriana.dev',
     siteName: 'Luis Miguel Triana Rueda',
   },
   twitter: {
