@@ -47,7 +47,7 @@ export function Contact() {
       <div className="max-w-5xl mx-auto px-6">
         {/* Section label */}
         <div className="flex items-center gap-4 mb-12">
-          <span className="font-mono text-primary text-sm tracking-widest uppercase">05</span>
+          <span className="font-mono text-primary text-sm tracking-widest uppercase">06</span>
           <div className="flex-1 h-px bg-border" />
           <span className="font-mono text-muted-foreground text-xs tracking-widest uppercase">Contacto</span>
         </div>
