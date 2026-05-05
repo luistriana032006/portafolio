@@ -1,19 +1,5 @@
 import { Github, Linkedin, MapPin } from 'lucide-react'
 
-function TikTokIcon({ size = 14 }: { size?: number }) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      aria-hidden="true"
-    >
-      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z" />
-    </svg>
-  )
-}
-
 const LINKS = [
   {
     label: 'GitHub',
@@ -23,15 +9,9 @@ const LINKS = [
   },
   {
     label: 'LinkedIn',
-    value: 'linkedin.com/in/luismigueltr',
-    href: 'https://www.linkedin.com/in/luis-triana-2917202a2/',
+    value: 'linkedin.com/in/luis-miguel-triana-rueda-2917202a2',
+    href: 'https://www.linkedin.com/in/luis-miguel-triana-rueda-2917202a2',
     icon: Linkedin,
-  },
-  {
-    label: 'TikTok',
-    value: 'tiktok.com/@luisdotbit',
-    href: 'https://www.tiktok.com/@luisdotbit',
-    icon: TikTokIcon,
   },
   {
     label: 'Location',
@@ -63,7 +43,7 @@ export function Contact() {
               se alineen con mi camino hacia MBZUAI 2027.
             </p>
             <a
-              href="https://www.linkedin.com/in/luis-triana-2917202a2/"
+              href="https://www.linkedin.com/in/luis-miguel-triana-rueda-2917202a2"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 border border-primary bg-primary text-primary-foreground font-sans font-semibold text-sm px-6 py-3 tracking-wide uppercase hover:bg-primary/90 transition-colors"
