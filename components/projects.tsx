@@ -72,10 +72,10 @@ export function Projects() {
                       href={project.repoLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-muted-foreground hover:text-primary transition-colors"
+                      className="text-primary transition-all duration-300 filter-[drop-shadow(0_0_6px_rgba(232,97,58,0.65))] hover:filter-[drop-shadow(0_0_14px_rgba(232,97,58,1))] hover:scale-110"
                       aria-label={`Repositorio de ${project.name}`}
                     >
-                      <Github size={15} />
+                      <Github size={22} />
                     </a>
                   ) : (
                     <span

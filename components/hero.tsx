@@ -8,7 +8,6 @@ const ROLES = [
   'Java / Spring Boot Dev',
   'ML Engineering Student',
   'Building AI Tools',
-  'Socorro, Colombia \u{1F1E8}\u{1F1F4}',
 ]
 
 function useTypewriter(words: string[], typingSpeed = 60, deletingSpeed = 35, pauseDuration = 1800) {
@@ -60,7 +59,7 @@ export function Hero() {
       {/* Ambient amber glow */}
       <div
         className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full"
-        style={{ background: 'radial-gradient(circle, rgba(0,212,255,0.05) 0%, transparent 70%)' }}
+        style={{ background: 'radial-gradient(circle, rgba(232,97,58,0.05) 0%, transparent 70%)' }}
         aria-hidden="true"
       />
 
@@ -94,10 +93,7 @@ export function Hero() {
           </p>
         </div>
 
-        {/* Location */}
-        <p className="font-mono text-sm text-muted-foreground mb-10 tracking-wide">
-          <span className="text-primary">{'>'}</span> Socorro, Santander — Colombia
-        </p>
+        {/* Location removed — visible in contact section */}
 
         {/* CTA buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center">

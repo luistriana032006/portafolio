@@ -40,7 +40,7 @@ export function Contact() {
             </h2>
             <p className="font-sans text-base leading-relaxed text-muted-foreground mb-8">
               Estoy abierto a colaboraciones, proyectos de investigación en ML/IA, y oportunidades que
-              se alineen con mi camino hacia MBZUAI 2027.
+              ayuden a crecer a las entidades.
             </p>
             <a
               href="https://www.linkedin.com/in/luis-miguel-triana-rueda-2917202a2"

@@ -10,23 +10,23 @@
   --card-foreground: #e8e8e8;
   --popover: #0f0f0f;
   --popover-foreground: #e8e8e8;
-  --primary: #00D4FF;
-  --primary-foreground: #080808;
+  --primary: #E8613A;
+  --primary-foreground: #FAF3EE;
   --secondary: #1a1a1a;
   --secondary-foreground: #e8e8e8;
   --muted: #1a1a1a;
   --muted-foreground: #6b6b6b;
-  --accent: #00D4FF;
-  --accent-foreground: #080808;
+  --accent: #E8613A;
+  --accent-foreground: #FAF3EE;
   --destructive: #ef4444;
   --destructive-foreground: #e8e8e8;
   --border: #222222;
   --input: #1a1a1a;
-  --ring: #00D4FF;
+  --ring: #E8613A;
   --radius: 0.25rem;
-  --cyan: #00D4FF;
-  --cyan-dim: rgba(0, 212, 255, 0.10);
-  --cyan-mid: rgba(0, 212, 255, 0.22);
+  --cyan: #E8613A;
+  --cyan-dim: rgba(232, 97, 58, 0.10);
+  --cyan-mid: rgba(232, 97, 58, 0.22);
 }
 
 .dark {
@@ -36,19 +36,19 @@
   --card-foreground: #e8e8e8;
   --popover: #0f0f0f;
   --popover-foreground: #e8e8e8;
-  --primary: #00D4FF;
-  --primary-foreground: #080808;
+  --primary: #E8613A;
+  --primary-foreground: #FAF3EE;
   --secondary: #1a1a1a;
   --secondary-foreground: #e8e8e8;
   --muted: #1a1a1a;
   --muted-foreground: #6b6b6b;
-  --accent: #00D4FF;
-  --accent-foreground: #080808;
+  --accent: #E8613A;
+  --accent-foreground: #FAF3EE;
   --destructive: #ef4444;
   --destructive-foreground: #e8e8e8;
   --border: #222222;
   --input: #1a1a1a;
-  --ring: #00D4FF;
+  --ring: #E8613A;
 }
 
 @theme inline {
@@ -96,8 +96,8 @@
 /* Grid background */
 .grid-bg {
   background-image:
-    linear-gradient(rgba(0, 212, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 212, 255, 0.035) 1px, transparent 1px);
+    linear-gradient(rgba(232, 97, 58, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(232, 97, 58, 0.035) 1px, transparent 1px);
   background-size: 48px 48px;
 }
 
@@ -128,16 +128,16 @@
 
 /* Glow effects */
 .cyan-glow {
-  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3), 0 0 40px rgba(0, 212, 255, 0.1);
+  box-shadow: 0 0 20px rgba(232, 97, 58, 0.3), 0 0 40px rgba(232, 97, 58, 0.1);
 }
 
 .cyan-glow-text {
-  text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+  text-shadow: 0 0 20px rgba(232, 97, 58, 0.5);
 }
 
 /* Timeline glow dot */
 .timeline-dot {
-  box-shadow: 0 0 0 4px rgba(0, 212, 255, 0.15), 0 0 14px rgba(0, 212, 255, 0.5);
+  box-shadow: 0 0 0 4px rgba(232, 97, 58, 0.15), 0 0 14px rgba(232, 97, 58, 0.5);
 }
 
 /* Card hover glow */
@@ -146,15 +146,15 @@
 }
 .card-hover:hover {
   transform: translateY(-4px);
-  box-shadow: 0 0 0 1px rgba(0, 212, 255, 0.35), 0 8px 32px rgba(0, 212, 255, 0.12);
-  border-color: rgba(0, 212, 255, 0.35);
+  box-shadow: 0 0 0 1px rgba(232, 97, 58, 0.35), 0 8px 32px rgba(232, 97, 58, 0.12);
+  border-color: rgba(232, 97, 58, 0.35);
 }
 
 /* Skill tag glow on hover */
 .skill-tag:hover {
-  box-shadow: 0 0 12px rgba(0, 212, 255, 0.3);
-  border-color: rgba(0, 212, 255, 0.6);
-  color: #00D4FF;
+  box-shadow: 0 0 12px rgba(232, 97, 58, 0.3);
+  border-color: rgba(232, 97, 58, 0.6);
+  color: #E8613A;
 }
 
 /* Noise overlay subtle */
