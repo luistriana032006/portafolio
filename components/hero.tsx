@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState, useRef } from 'react'
-import { ChevronDown } from 'lucide-react'
+import { ChevronDown, Linkedin, Github } from 'lucide-react'
 
 const ROLES = [
   'Software Engineer',
@@ -103,6 +103,31 @@ export function Hero() {
           >
             Ver Proyectos
           </a>
+        </div>
+
+        {/* Sígueme */}
+        <div className="mt-6 flex flex-col items-center gap-3">
+          <span className="font-mono text-xs text-muted-foreground tracking-widest uppercase">Sígueme</span>
+          <div className="flex items-center gap-4">
+            <a
+              href="https://www.linkedin.com/in/luis-miguel-triana-rueda-2917202a2"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="w-9 h-9 flex items-center justify-center border border-border bg-secondary text-muted-foreground hover:border-primary hover:text-primary transition-colors"
+            >
+              <Linkedin size={16} />
+            </a>
+            <a
+              href="https://github.com/luistriana032006"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              className="w-9 h-9 flex items-center justify-center border border-border bg-secondary text-muted-foreground hover:border-primary hover:text-primary transition-colors"
+            >
+              <Github size={16} />
+            </a>
+          </div>
         </div>
 
         {/* Scroll hint */}
