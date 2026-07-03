@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from 'react'
 import { ChevronDown, Linkedin, Github } from 'lucide-react'
+import { PetWidget } from './pet-widget'
 
 const ROLES = [
   'Software Engineer',
@@ -136,6 +137,9 @@ export function Hero() {
           <ChevronDown size={16} />
         </div>
       </div>
+
+      {/* Pair programmer pet widget */}
+      <PetWidget />
 
       {/* Corner decorations */}
       <div className="absolute bottom-0 left-0 w-24 h-24 border-l border-b border-border/40" aria-hidden="true" />

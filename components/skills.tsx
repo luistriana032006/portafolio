@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 const SKILL_GROUPS = [
   {
     category: 'Backend',
@@ -23,7 +25,19 @@ const SKILL_GROUPS = [
 
 export function Skills() {
   return (
-    <section id="stack" className="py-24 md:py-32 border-t border-border bg-card">
+    <section id="stack" className="relative py-24 md:py-32 border-t border-border bg-card overflow-hidden">
+      {/* Mascota fija lado derecho */}
+      <div className="hidden md:block absolute right-8 bottom-8 pointer-events-none select-none z-10">
+        <Image
+          src="/mascota/08_codigo.webp"
+          alt="mascota codigo"
+          width={140}
+          height={140}
+          className="object-contain"
+          priority
+        />
+      </div>
+
       <div className="max-w-5xl mx-auto px-6">
         {/* Section label */}
         <div className="flex items-center gap-4 mb-12">
