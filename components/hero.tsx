@@ -100,6 +100,11 @@ export function Hero() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
             href="#proyectos"
+            onClick={() => {
+              if (typeof window !== 'undefined' && window.fbq) {
+                window.fbq('track', 'ViewContent')
+              }
+            }}
             className="inline-flex items-center justify-center gap-2 border border-primary bg-primary text-primary-foreground font-sans font-semibold text-sm px-6 py-3 tracking-wide uppercase hover:bg-primary/90 transition-colors"
           >
             Ver Proyectos
