@@ -101,6 +101,7 @@ export function Hero() {
           <a
             href="#proyectos"
             onClick={() => {
+              console.log('CLICK DISPARADO', Date.now())
               if (typeof window !== 'undefined' && window.fbq) {
                 window.fbq('track', 'ViewContent')
               }
