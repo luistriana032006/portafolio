@@ -92,7 +92,7 @@ const PROJECTS: Array<{
     tags: ['Electron', 'React', 'TypeScript', 'TipTap', 'KaTeX'],
     link: 'https://helecho.luistriana.dev',
     repoLink: 'https://github.com/luistriana032006/Helecho',
-    stat: null,
+    stat: 'Open Source',
     inDev: false,
   },
 ]
