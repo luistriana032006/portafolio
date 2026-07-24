@@ -109,7 +109,7 @@ export function Projects() {
 
   return (
     <section id="proyectos" className="py-24 md:py-32 border-t border-border bg-card">
-      <div className="max-w-5xl mx-auto px-6">
+      <div className="w-full px-6 lg:px-10 xl:px-16">
         {/* Section label */}
         <div className="flex items-center gap-4 mb-12">
           <span className="font-mono text-primary text-sm tracking-widest uppercase">03</span>
@@ -145,9 +145,7 @@ export function Projects() {
             )
           })}
         </div>
-      </div>
 
-      <div className="w-full px-6 lg:px-10 xl:px-16">
         <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-stretch">
           {filteredProjects.map((project) => (
             <article
