@@ -3,11 +3,11 @@ import Image from 'next/image'
 const SKILL_GROUPS = [
   {
     category: 'Backend',
-    skills: ['Java', 'Spring Boot', 'FastAPI', 'Python'],
+    skills: ['Java', 'Spring Boot', 'FastAPI', 'Python', 'SQL'],
   },
   {
     category: 'AI / ML',
-    skills: ['Ollama', 'ChromaDB', 'scikit-learn', 'pandas', 'NumPy', 'Time Series'],
+    skills: ['Ollama', 'ChromaDB', 'scikit-learn', 'pandas', 'NumPy', 'Time Series', 'XGBoost'],
   },
   {
     category: 'Frontend',
@@ -19,7 +19,7 @@ const SKILL_GROUPS = [
   },
   {
     category: 'Databases',
-    skills: ['PostgreSQL', 'MySQL'],
+    skills: ['PostgreSQL', 'MySQL', 'MongoDB'],
   },
 ]
 
