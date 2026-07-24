@@ -1,6 +1,6 @@
 'use client'
 
-import { ArrowUpRight, FileText, Github } from 'lucide-react'
+import { FileText, Github, Globe } from 'lucide-react'
 import { useState } from 'react'
 
 type ProjectType = 'deployed' | 'case-study'
@@ -173,17 +173,6 @@ export function Projects() {
                         <Github size={22} />
                       </a>
                     )}
-                    {project.link && (
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-muted-foreground hover:text-primary transition-colors"
-                        aria-label={`Ver ${project.name}`}
-                      >
-                        <ArrowUpRight size={16} />
-                      </a>
-                    )}
                   </div>
                 )}
               </div>
@@ -224,18 +213,31 @@ export function Projects() {
                 ))}
               </div>
 
-              {/* Acción del caso de estudio */}
-              {project.type === 'case-study' && project.pdfLink && (
-                <a
-                  href={project.pdfLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 font-mono text-xs text-primary border border-primary/40 bg-primary/5 hover:bg-primary/10 hover:border-primary/60 transition-colors px-4 py-2 self-start mt-5"
-                >
-                  <FileText size={13} />
-                  Ver propuesta
-                </a>
-              )}
+              {/* Acciones */}
+              <div className="flex flex-wrap gap-2 self-start mt-5">
+                {project.type === 'case-study' && project.pdfLink && (
+                  <a
+                    href={project.pdfLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 font-mono text-xs text-primary border border-primary/40 bg-primary/5 hover:bg-primary/10 hover:border-primary/60 transition-colors px-4 py-2"
+                  >
+                    <FileText size={13} />
+                    Ver propuesta
+                  </a>
+                )}
+                {project.type === 'deployed' && project.link && (
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 font-mono text-xs text-primary border border-primary/40 bg-primary/5 hover:bg-primary/10 hover:border-primary/60 transition-colors px-4 py-2"
+                  >
+                    <Globe size={13} />
+                    Ver en el navegador
+                  </a>
+                )}
+              </div>
 
               {/* Hover accent line */}
               <div
