@@ -83,6 +83,18 @@ const PROJECTS: Array<{
     stat: null,
     inDev: false,
   },
+  {
+    index: '07',
+    type: 'deployed',
+    name: 'Salón de Contenido — Dashboard de Operaciones de Contenido',
+    description:
+      'Propuesta interna para 30X, dirigida a construir la operación de contenido de una media company en LatAm. Centraliza el tracking de publicaciones y el copy, con flujos semi-automáticos de producción que requieren aprobación humana antes de publicar — no genera contenido con IA, automatiza la operación detrás de producirlo a escala. Demo funcional desplegada, con kanban de cuatro etapas, campos personalizables por tarjeta, simulación de triggers automáticos y onboarding guiado.',
+    tags: ['Next.js', 'Operaciones de Contenido', 'Kanban', 'Producto'],
+    link: 'https://propuesta30x.luistriana.dev/',
+    repoLink: null,
+    stat: 'Propuesta interna · 30X',
+    inDev: false,
+  },
 ]
 
 const FILTERS: Array<{ key: 'all' | ProjectType; label: string }> = [
