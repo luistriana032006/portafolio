@@ -36,7 +36,7 @@ export function About() {
             </p>
             <p className="font-sans text-base leading-relaxed text-muted-foreground mb-8">
               Hoy construyo herramientas de IA y tengo como meta el Master's en ML Engineering en MBZUAI,
-              Dubai — 2027. Mi enfoque actual es aplicar ML a problemas reales del agro colombiano.
+              Dubai — 2027.
             </p>
           </div>
         </div>
