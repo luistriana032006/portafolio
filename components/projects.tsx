@@ -20,6 +20,18 @@ const PROJECTS: Array<{
   {
     index: '01',
     type: 'deployed',
+    name: 'Salón de Contenido — Dashboard de Operaciones de Contenido',
+    description:
+      'Dashboard de operaciones de contenido para una media company de LatAm — genera contenido con APIs de IA para creación de contenido, con aprobación humana en cada paso antes de publicar.',
+    tags: ['Next.js', 'Operaciones de Contenido', 'Kanban', 'Producto'],
+    link: 'https://propuesta30x.luistriana.dev/',
+    repoLink: null,
+    stat: 'Propuesta interna · 30X',
+    inDev: false,
+  },
+  {
+    index: '02',
+    type: 'deployed',
     name: 'Trident-AI',
     description:
       'Asistente de IA local con FastAPI + Spring Boot + React. Tres pilares: Inteligencia Local (Ollama), Datos Estructurados (APIs), Búsqueda Web. Diseñado para correr 100% offline en hardware personal.',
@@ -30,7 +42,7 @@ const PROJECTS: Array<{
     inDev: true,
   },
   {
-    index: '02',
+    index: '03',
     type: 'deployed',
     name: 'Análisis de Churn en Telecomunicaciones',
     description:
@@ -42,7 +54,7 @@ const PROJECTS: Array<{
     inDev: false,
   },
   {
-    index: '03',
+    index: '04',
     type: 'deployed',
     name: 'SLAS',
     description:
@@ -54,7 +66,7 @@ const PROJECTS: Array<{
     inDev: false,
   },
   {
-    index: '04',
+    index: '05',
     type: 'case-study',
     name: 'Propuesta técnica — Onboarding del reto de 21 días',
     description:
@@ -63,7 +75,7 @@ const PROJECTS: Array<{
     pdfLink: '/docs/propuesta_onboarding_lab10.pdf',
   },
   {
-    index: '05',
+    index: '06',
     type: 'case-study',
     name: 'Zolvo — Estrategia de expansión a México',
     description:
@@ -72,7 +84,7 @@ const PROJECTS: Array<{
     pdfLink: '/docs/Zolvo_Estrategia_LuisMiguel.pdf',
   },
   {
-    index: '06',
+    index: '07',
     type: 'deployed',
     name: 'Helecho — Editor de apuntes técnicos para Linux',
     description:
@@ -81,18 +93,6 @@ const PROJECTS: Array<{
     link: 'https://helecho.luistriana.dev',
     repoLink: 'https://github.com/luistriana032006/Helecho',
     stat: null,
-    inDev: false,
-  },
-  {
-    index: '07',
-    type: 'deployed',
-    name: 'Salón de Contenido — Dashboard de Operaciones de Contenido',
-    description:
-      'Dashboard de operaciones de contenido para una media company de LatAm — genera contenido con APIs de IA para creación de contenido, con aprobación humana en cada paso antes de publicar.',
-    tags: ['Next.js', 'Operaciones de Contenido', 'Kanban', 'Producto'],
-    link: 'https://propuesta30x.luistriana.dev/',
-    repoLink: null,
-    stat: 'Propuesta interna · 30X',
     inDev: false,
   },
 ]
@@ -146,7 +146,7 @@ export function Projects() {
           })}
         </div>
 
-        <div className="grid gap-6 md:grid-cols-1 lg:grid-cols-3">
+        <div className="grid gap-6 grid-cols-1">
           {filteredProjects.map((project) => (
             <article
               key={project.index}
