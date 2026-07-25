@@ -95,6 +95,18 @@ const PROJECTS: Array<{
     stat: 'Open Source',
     inDev: false,
   },
+  {
+    index: '08',
+    type: 'deployed',
+    name: 'Siwar — App móvil para enseñar programación en Latinoamérica',
+    description:
+      'App móvil offline-first para enseñar programación en Latinoamérica — no es un curso genérico, es mi propia bitácora de aprendizaje, abierta para que cualquiera la siga. Incluye un intérprete de Java escrito a mano en TypeScript y persistencia local con SQLite.',
+    tags: ['React Native', 'Expo', 'TypeScript', 'SQLite', 'Educación'],
+    link: null,
+    repoLink: 'https://github.com/luistriana032006/siwar-app',
+    stat: 'Open Source',
+    inDev: true,
+  },
 ]
 
 const FILTERS: Array<{ key: 'all' | ProjectType; label: string }> = [
