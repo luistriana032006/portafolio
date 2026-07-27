@@ -150,6 +150,16 @@
   border-color: rgba(232, 97, 58, 0.35);
 }
 
+/* Project-specific accent glow on hover (opt-in per card via --accent-*) */
+.card-hover.card-hover--accent {
+  transition: border-color 0.22s ease-out, box-shadow 0.22s ease-out, transform 0.25s ease;
+}
+.card-hover.card-hover--accent:hover,
+.card-hover.card-hover--accent:has(:focus-visible) {
+  border-color: var(--accent-border-color);
+  box-shadow: 0 0 28px var(--accent-glow-color);
+}
+
 /* Skill tag glow on hover */
 .skill-tag:hover {
   box-shadow: 0 0 12px rgba(232, 97, 58, 0.3);

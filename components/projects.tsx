@@ -16,6 +16,7 @@ const PROJECTS: Array<{
   stat?: string | null
   inDev?: boolean
   pdfLink?: string
+  accentColor?: string
 }> = [
   {
     index: '01',
@@ -28,6 +29,7 @@ const PROJECTS: Array<{
     repoLink: null,
     stat: 'Propuesta interna · 30X',
     inDev: false,
+    accentColor: '#E9FF7B',
   },
   {
     index: '02',
@@ -40,6 +42,7 @@ const PROJECTS: Array<{
     repoLink: 'https://github.com/luistriana032006/trident-ai',
     stat: null,
     inDev: true,
+    accentColor: '#0891B2',
   },
   {
     index: '03',
@@ -52,6 +55,7 @@ const PROJECTS: Array<{
     repoLink: 'https://github.com/luistriana032006/telecom-churn-analysis',
     stat: 'GCI World · U. Tokyo',
     inDev: false,
+    accentColor: '#38BDF8',
   },
   {
     index: '04',
@@ -64,6 +68,7 @@ const PROJECTS: Array<{
     repoLink: 'https://github.com/luistriana032006/slas-sistema-de-liquidacion-de-aportes',
     stat: 'Presentado a Aportes en Línea',
     inDev: false,
+    accentColor: '#F97316',
   },
   {
     index: '05',
@@ -73,6 +78,7 @@ const PROJECTS: Array<{
       'Research aplicado a un problema real de producto: fricción en el onboarding de un reto de 21 días. Propuesta técnica documentada — bot de WhatsApp con IA construido sobre el stack ya existente del negocio analizado.',
     tags: ['Research', 'WhatsApp Bot', 'IA', 'Producto'],
     pdfLink: '/docs/propuesta_onboarding_lab10.pdf',
+    accentColor: '#E9FF7B',
   },
   {
     index: '06',
@@ -82,6 +88,7 @@ const PROJECTS: Array<{
       'Research y propuesta estratégica para el lanzamiento de Zolvo en México — perfiles de cliente ideal, arquitectura de un agente de ventas con IA, secuencia de contacto y análisis de ROI del cliente. Elaborado para el Makers Admission Challenge 2026.',
     tags: ['Research', 'Ventas', 'IA', 'Estrategia'],
     pdfLink: '/docs/Zolvo_Estrategia_LuisMiguel.pdf',
+    accentColor: '#FDBA74',
   },
   {
     index: '07',
@@ -93,7 +100,8 @@ const PROJECTS: Array<{
     link: 'https://helecho.luistriana.dev',
     repoLink: 'https://github.com/luistriana032006/Helecho',
     stat: 'Open Source',
-    inDev: false,
+    inDev: true,
+    accentColor: '#4A7C59',
   },
   {
     index: '08',
@@ -106,8 +114,17 @@ const PROJECTS: Array<{
     repoLink: 'https://github.com/luistriana032006/siwar-app',
     stat: 'Open Source',
     inDev: true,
+    accentColor: '#F07660',
   },
 ]
+
+function hexToRgba(hex: string, alpha: number): string {
+  const normalized = hex.replace('#', '')
+  const r = parseInt(normalized.slice(0, 2), 16)
+  const g = parseInt(normalized.slice(2, 4), 16)
+  const b = parseInt(normalized.slice(4, 6), 16)
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`
+}
 
 const FILTERS: Array<{ key: 'all' | ProjectType; label: string }> = [
   { key: 'all', label: 'Todos' },
@@ -162,7 +179,17 @@ export function Projects() {
           {filteredProjects.map((project) => (
             <article
               key={project.index}
-              className="card-hover group relative flex flex-col border border-border bg-background p-6"
+              className={`card-hover group relative flex flex-col border border-border bg-background p-6${
+                project.accentColor ? ' card-hover--accent' : ''
+              }`}
+              style={
+                project.accentColor
+                  ? ({
+                      '--accent-border-color': project.accentColor,
+                      '--accent-glow-color': hexToRgba(project.accentColor, 0.18),
+                    } as React.CSSProperties)
+                  : undefined
+              }
             >
               {/* Index */}
               <span className="font-mono text-xs text-muted-foreground/40 mb-4">{project.index}</span>
