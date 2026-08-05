@@ -1,9 +1,10 @@
 'use client'
 
-import { FileText, Github, Globe } from 'lucide-react'
+import { Check, FileText, Globe, Sparkles } from 'lucide-react'
 import { useState } from 'react'
 
 type ProjectType = 'deployed' | 'case-study'
+type QualityKey = 'human-loop' | 'local-first' | 'latam-real'
 
 const PROJECTS: Array<{
   index: string
@@ -17,6 +18,7 @@ const PROJECTS: Array<{
   inDev?: boolean
   pdfLink?: string
   accentColor?: string
+  patterns?: QualityKey[]
 }> = [
   {
     index: '01',
@@ -30,6 +32,7 @@ const PROJECTS: Array<{
     stat: 'Propuesta interna · 30X',
     inDev: false,
     accentColor: '#E9FF7B',
+    patterns: ['human-loop', 'latam-real'],
   },
   {
     index: '02',
@@ -43,6 +46,7 @@ const PROJECTS: Array<{
     stat: null,
     inDev: true,
     accentColor: '#0891B2',
+    patterns: ['human-loop', 'local-first'],
   },
   {
     index: '03',
@@ -69,6 +73,7 @@ const PROJECTS: Array<{
     stat: 'Presentado a Aportes en Línea',
     inDev: false,
     accentColor: '#F97316',
+    patterns: ['latam-real'],
   },
   {
     index: '05',
@@ -79,6 +84,7 @@ const PROJECTS: Array<{
     tags: ['Research', 'WhatsApp Bot', 'IA', 'Producto'],
     pdfLink: '/docs/propuesta_onboarding_lab10.pdf',
     accentColor: '#E9FF7B',
+    patterns: ['latam-real'],
   },
   {
     index: '06',
@@ -89,6 +95,7 @@ const PROJECTS: Array<{
     tags: ['Research', 'Ventas', 'IA', 'Estrategia'],
     pdfLink: '/docs/Zolvo_Estrategia_LuisMiguel.pdf',
     accentColor: '#FDBA74',
+    patterns: ['latam-real'],
   },
   {
     index: '07',
@@ -102,6 +109,7 @@ const PROJECTS: Array<{
     stat: 'Open Source',
     inDev: true,
     accentColor: '#4A7C59',
+    patterns: ['local-first'],
   },
   {
     index: '08',
@@ -115,6 +123,32 @@ const PROJECTS: Array<{
     stat: 'Open Source',
     inDev: true,
     accentColor: '#F07660',
+    patterns: ['local-first', 'latam-real'],
+  },
+  {
+    index: '09',
+    type: 'deployed',
+    name: 'Motor de Recomendación de Seguros — Colsubsidio',
+    description:
+      'Dado el perfil de una persona, recomienda hasta 3 productos de seguros de Colsubsidio ordenados por qué tan bien encajan, cada uno con su score, nivel de confianza y la hipótesis de negocio exacta que lo disparó. No es caja negra: las hipótesis las firma un humano, el motor solo pesa su evidencia estadística, y cada recomendación queda registrada y trazable en una base de datos consultable con dashboards en vivo.',
+    tags: ['Python', 'FastAPI', 'Streamlit', 'SQLite', 'MCP', 'ML'],
+    link: null,
+    repoLink: 'https://github.com/luistriana032006/seguros_colsubsidio',
+    stat: null,
+    inDev: false,
+    accentColor: '#8B5CF6',
+    patterns: ['human-loop', 'latam-real'],
+  },
+  {
+    index: '10',
+    type: 'case-study',
+    name: 'Idilio TV — Cómo construir una empresa de streaming cultural',
+    description:
+      'Research independiente de tres meses sobre Idilio TV, plataforma de streaming cultural latinoamericano — identifica la métrica que nadie está midiendo (finalización completa de series, no clicks ni tiempo en pantalla), propone registro obligatorio como base de datos honesta y una apuesta de foco en una sola "serie estrella". Traduce el análisis en prioridades concretas para los cuatro roles técnicos que la empresa contrataba en agosto.',
+    tags: ['Research', 'Producto', 'Growth', 'Streaming', 'LatAm'],
+    pdfLink: '/docs/idilio-streaming-cultural.pdf',
+    accentColor: '#EC4899',
+    patterns: ['latam-real'],
   },
 ]
 
@@ -126,15 +160,40 @@ function hexToRgba(hex: string, alpha: number): string {
   return `rgba(${r}, ${g}, ${b}, ${alpha})`
 }
 
+function GithubIcon({ size = 22, className }: { size?: number; className?: string }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+      <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+    </svg>
+  )
+}
+
 const FILTERS: Array<{ key: 'all' | ProjectType; label: string }> = [
   { key: 'all', label: 'Todos' },
   { key: 'deployed', label: 'Desplegados' },
   { key: 'case-study', label: 'Casos de estudio' },
 ]
 
+const QUALITIES: Array<{ key: QualityKey; label: string }> = [
+  { key: 'human-loop', label: 'IA con humano en el loop' },
+  { key: 'local-first', label: 'Local-first / privacidad' },
+  { key: 'latam-real', label: 'Negocios reales de LatAm' },
+]
+
 export function Projects() {
   const [filter, setFilter] = useState<'all' | ProjectType>('all')
-  const filteredProjects = filter === 'all' ? PROJECTS : PROJECTS.filter((p) => p.type === filter)
+  const [activeQualities, setActiveQualities] = useState<QualityKey[]>([])
+
+  const toggleQuality = (key: QualityKey) => {
+    setActiveQualities((prev) => (prev.includes(key) ? prev.filter((k) => k !== key) : [...prev, key]))
+  }
+
+  const filteredProjects = PROJECTS.filter((project) => {
+    const matchesType = filter === 'all' || project.type === filter
+    const matchesQuality =
+      activeQualities.length === 0 || activeQualities.some((q) => project.patterns?.includes(q))
+    return matchesType && matchesQuality
+  })
 
   return (
     <section id="proyectos" className="py-24 md:py-32 border-t border-border bg-card">
@@ -151,8 +210,8 @@ export function Projects() {
           <span className="text-primary"> construido</span>
         </h2>
 
-        {/* Tabs de filtro */}
-        <div className="flex flex-wrap gap-2 mb-12" role="tablist" aria-label="Filtrar proyectos por tipo">
+        {/* Tabs de filtro por tipo */}
+        <div className="flex flex-wrap gap-2 mb-6" role="tablist" aria-label="Filtrar proyectos por tipo">
           {FILTERS.map((f) => {
             const count = f.key === 'all' ? PROJECTS.length : PROJECTS.filter((p) => p.type === f.key).length
             const active = filter === f.key
@@ -173,6 +232,58 @@ export function Projects() {
               </button>
             )
           })}
+        </div>
+
+        {/* Filtro por cualidad */}
+        <div className="inline-flex items-center gap-2 border border-primary/30 bg-primary/5 px-4 py-2.5 mb-4">
+          <Sparkles size={14} className="text-primary shrink-0" aria-hidden="true" />
+          <span className="font-mono text-xs text-primary tracking-wide">
+            Filtra según la cualidad que quieras ver
+          </span>
+        </div>
+
+        <div
+          className="flex flex-wrap items-center gap-2 mb-12"
+          role="group"
+          aria-label="Filtrar proyectos por cualidad"
+        >
+          {QUALITIES.map((q) => {
+            const active = activeQualities.includes(q.key)
+            const count = PROJECTS.filter((p) => p.patterns?.includes(q.key)).length
+            return (
+              <button
+                key={q.key}
+                type="button"
+                role="checkbox"
+                aria-checked={active}
+                onClick={() => toggleQuality(q.key)}
+                className={`inline-flex items-center gap-2 font-mono text-xs tracking-wide px-3.5 py-2 border transition-colors ${
+                  active
+                    ? 'text-primary border-primary/50 bg-primary/10'
+                    : 'text-muted-foreground border-border bg-secondary hover:text-foreground hover:border-foreground/40'
+                }`}
+              >
+                <span
+                  className={`flex items-center justify-center w-3.5 h-3.5 border shrink-0 ${
+                    active ? 'border-primary bg-primary' : 'border-muted-foreground/40'
+                  }`}
+                  aria-hidden="true"
+                >
+                  {active && <Check size={10} className="text-background" strokeWidth={3} />}
+                </span>
+                {q.label} <span className="opacity-60">({count})</span>
+              </button>
+            )
+          })}
+          {activeQualities.length > 0 && (
+            <button
+              type="button"
+              onClick={() => setActiveQualities([])}
+              className="font-mono text-xs text-muted-foreground underline underline-offset-2 hover:text-foreground px-2 py-2"
+            >
+              Limpiar
+            </button>
+          )}
         </div>
 
         <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-stretch">
@@ -209,7 +320,7 @@ export function Projects() {
                         className="text-primary transition-all duration-300 filter-[drop-shadow(0_0_6px_rgba(232,97,58,0.65))] hover:filter-[drop-shadow(0_0_14px_rgba(232,97,58,1))] hover:scale-110"
                         aria-label={`Repositorio de ${project.name}`}
                       >
-                        <Github size={22} />
+                        <GithubIcon size={22} />
                       </a>
                     )}
                   </div>
@@ -239,6 +350,29 @@ export function Projects() {
                   </span>
                 )}
               </div>
+
+              {/* Cualidades */}
+              {project.patterns && project.patterns.length > 0 && (
+                <div className="flex flex-wrap gap-1.5 mb-5">
+                  {project.patterns.map((key) => {
+                    const quality = QUALITIES.find((q) => q.key === key)
+                    if (!quality) return null
+                    const highlighted = activeQualities.includes(key)
+                    return (
+                      <span
+                        key={key}
+                        className={`font-mono text-[11px] px-2 py-0.5 border tracking-wide transition-colors ${
+                          highlighted
+                            ? 'text-primary border-primary/50 bg-primary/10'
+                            : 'text-muted-foreground/80 border-border/70'
+                        }`}
+                      >
+                        {quality.label}
+                      </span>
+                    )
+                  })}
+                </div>
+              )}
 
               {/* Tags */}
               <div className="flex flex-wrap gap-1.5">
