@@ -146,7 +146,7 @@ const PROJECTS: Array<{
     description:
       'Research independiente de tres meses sobre Idilio TV, plataforma de streaming cultural latinoamericano — identifica la métrica que nadie está midiendo (finalización completa de series, no clicks ni tiempo en pantalla), propone registro obligatorio como base de datos honesta y una apuesta de foco en una sola "serie estrella". Traduce el análisis en prioridades concretas para los cuatro roles técnicos que la empresa contrataba en agosto.',
     tags: ['Research', 'Producto', 'Growth', 'Streaming', 'LatAm'],
-    pdfLink: '/docs/idilio-streaming-cultural.pdf',
+    pdfLink: '/docs/streaming-cultural.pdf',
     accentColor: '#EC4899',
     patterns: ['latam-real'],
   },
