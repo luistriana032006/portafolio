@@ -23,34 +23,6 @@ const PROJECTS: Array<{
   {
     index: '01',
     type: 'deployed',
-    name: 'Salón de Contenido — Dashboard de Operaciones de Contenido',
-    description:
-      'Dashboard de operaciones de contenido para una media company de LatAm — genera contenido con APIs de IA para creación de contenido, con aprobación humana en cada paso antes de publicar.',
-    tags: ['Next.js', 'Operaciones de Contenido', 'Kanban', 'Producto'],
-    link: 'https://propuesta30x.luistriana.dev/',
-    repoLink: null,
-    stat: 'Propuesta interna · 30X',
-    inDev: false,
-    accentColor: '#E9FF7B',
-    patterns: ['human-loop', 'latam-real'],
-  },
-  {
-    index: '02',
-    type: 'deployed',
-    name: 'Trident-AI',
-    description:
-      'Asistente de IA local con FastAPI + Spring Boot + React. Tres pilares: Inteligencia Local (Ollama), Datos Estructurados (APIs), Búsqueda Web. Diseñado para correr 100% offline en hardware personal.',
-    tags: ['Python', 'FastAPI', 'Ollama', 'React', 'Spring Boot'],
-    link: null,
-    repoLink: 'https://github.com/luistriana032006/trident-ai',
-    stat: null,
-    inDev: true,
-    accentColor: '#0891B2',
-    patterns: ['human-loop', 'local-first'],
-  },
-  {
-    index: '03',
-    type: 'deployed',
     name: 'Análisis de Churn en Telecomunicaciones',
     description:
       'Proyecto final del curso GCI World 2026: a partir de datos reales de una empresa de telecomunicaciones se hace un análisis completo de ciencia de datos (EDA, feature engineering y modelo predictivo) para entender por qué los clientes cancelan el servicio. El resultado se traduce en una propuesta de negocio con presentación dirigida a un cliente, como una consultoría real.',
@@ -62,7 +34,21 @@ const PROJECTS: Array<{
     accentColor: '#38BDF8',
   },
   {
-    index: '04',
+    index: '02',
+    type: 'deployed',
+    name: 'Motor de Recomendación de Seguros — Colsubsidio',
+    description:
+      'Dado el perfil de una persona, recomienda hasta 3 productos de seguros de Colsubsidio ordenados por qué tan bien encajan, cada uno con su score, nivel de confianza y la hipótesis de negocio exacta que lo disparó. No es caja negra: las hipótesis las firma un humano, el motor solo pesa su evidencia estadística, y cada recomendación queda registrada y trazable en una base de datos consultable con dashboards en vivo.',
+    tags: ['Python', 'FastAPI', 'Streamlit', 'SQLite', 'MCP', 'ML'],
+    link: null,
+    repoLink: 'https://github.com/luistriana032006/seguros_colsubsidio',
+    stat: null,
+    inDev: false,
+    accentColor: '#8B5CF6',
+    patterns: ['human-loop', 'latam-real'],
+  },
+  {
+    index: '03',
     type: 'deployed',
     name: 'SLAS',
     description:
@@ -76,7 +62,35 @@ const PROJECTS: Array<{
     patterns: ['latam-real'],
   },
   {
+    index: '04',
+    type: 'deployed',
+    name: 'Trident-AI',
+    description:
+      'Asistente de IA local con FastAPI + Spring Boot + React. Tres pilares: Inteligencia Local (Ollama), Datos Estructurados (APIs), Búsqueda Web. Diseñado para correr 100% offline en hardware personal.',
+    tags: ['Python', 'FastAPI', 'Ollama', 'React', 'Spring Boot'],
+    link: null,
+    repoLink: 'https://github.com/luistriana032006/trident-ai',
+    stat: null,
+    inDev: true,
+    accentColor: '#0891B2',
+    patterns: ['human-loop', 'local-first'],
+  },
+  {
     index: '05',
+    type: 'deployed',
+    name: 'Salón de Contenido — Dashboard de Operaciones de Contenido',
+    description:
+      'Dashboard de operaciones de contenido para una media company de LatAm — genera contenido con APIs de IA para creación de contenido, con aprobación humana en cada paso antes de publicar.',
+    tags: ['Next.js', 'Operaciones de Contenido', 'Kanban', 'Producto'],
+    link: 'https://propuesta30x.luistriana.dev/',
+    repoLink: null,
+    stat: 'Propuesta interna · 30X',
+    inDev: false,
+    accentColor: '#E9FF7B',
+    patterns: ['human-loop', 'latam-real'],
+  },
+  {
+    index: '06',
     type: 'case-study',
     name: 'Propuesta técnica — Onboarding del reto de 21 días',
     description:
@@ -87,7 +101,7 @@ const PROJECTS: Array<{
     patterns: ['latam-real'],
   },
   {
-    index: '06',
+    index: '07',
     type: 'case-study',
     name: 'Zolvo — Estrategia de expansión a México',
     description:
@@ -98,7 +112,7 @@ const PROJECTS: Array<{
     patterns: ['latam-real'],
   },
   {
-    index: '07',
+    index: '08',
     type: 'deployed',
     name: 'Helecho — Editor de apuntes técnicos para Linux',
     description:
@@ -107,12 +121,12 @@ const PROJECTS: Array<{
     link: 'https://helecho.luistriana.dev',
     repoLink: 'https://github.com/luistriana032006/Helecho',
     stat: 'Open Source',
-    inDev: true,
+    inDev: false,
     accentColor: '#4A7C59',
     patterns: ['local-first'],
   },
   {
-    index: '08',
+    index: '09',
     type: 'deployed',
     name: 'Siwar — App móvil para enseñar programación en Latinoamérica',
     description:
@@ -124,20 +138,6 @@ const PROJECTS: Array<{
     inDev: true,
     accentColor: '#F07660',
     patterns: ['local-first', 'latam-real'],
-  },
-  {
-    index: '09',
-    type: 'deployed',
-    name: 'Motor de Recomendación de Seguros — Colsubsidio',
-    description:
-      'Dado el perfil de una persona, recomienda hasta 3 productos de seguros de Colsubsidio ordenados por qué tan bien encajan, cada uno con su score, nivel de confianza y la hipótesis de negocio exacta que lo disparó. No es caja negra: las hipótesis las firma un humano, el motor solo pesa su evidencia estadística, y cada recomendación queda registrada y trazable en una base de datos consultable con dashboards en vivo.',
-    tags: ['Python', 'FastAPI', 'Streamlit', 'SQLite', 'MCP', 'ML'],
-    link: null,
-    repoLink: 'https://github.com/luistriana032006/seguros_colsubsidio',
-    stat: null,
-    inDev: false,
-    accentColor: '#8B5CF6',
-    patterns: ['human-loop', 'latam-real'],
   },
   {
     index: '10',
