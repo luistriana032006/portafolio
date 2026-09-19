@@ -1,6 +1,7 @@
 'use client'
 
 import { Check, FileText, Globe, Sparkles } from 'lucide-react'
+import Image from 'next/image'
 import { LivePreview } from './live-preview'
 import { useState } from 'react'
 
@@ -101,6 +102,7 @@ const PROJECTS: Array<{
       'Research aplicado a un problema real de producto: fricción en el onboarding de un reto de 21 días. Propuesta técnica documentada — bot de WhatsApp con IA construido sobre el stack ya existente del negocio analizado.',
     tags: ['Research', 'WhatsApp Bot', 'IA', 'Producto'],
     pdfLink: '/docs/propuesta_onboarding_lab10.pdf',
+    preview: '/previews/projects/onboarding-reto-21-dias.jpg',
     accentColor: '#E9FF7B',
     patterns: ['latam-real'],
   },
@@ -112,6 +114,7 @@ const PROJECTS: Array<{
       'Research y propuesta estratégica para el lanzamiento de Zolvo en México — perfiles de cliente ideal, arquitectura de un agente de ventas con IA, secuencia de contacto y análisis de ROI del cliente. Elaborado para el Makers Admission Challenge 2026.',
     tags: ['Research', 'Ventas', 'IA', 'Estrategia'],
     pdfLink: '/docs/Zolvo_Estrategia_LuisMiguel.pdf',
+    preview: '/previews/projects/zolvo-estrategia-mexico.jpg',
     accentColor: '#FDBA74',
     patterns: ['latam-real'],
   },
@@ -152,6 +155,7 @@ const PROJECTS: Array<{
       'Research independiente de tres meses sobre Idilio TV, plataforma de streaming cultural latinoamericano — identifica la métrica que nadie está midiendo (finalización completa de series, no clicks ni tiempo en pantalla), propone registro obligatorio como base de datos honesta y una apuesta de foco en una sola "serie estrella". Traduce el análisis en prioridades concretas para los cuatro roles técnicos que la empresa contrataba en agosto.',
     tags: ['Research', 'Producto', 'Growth', 'Streaming', 'LatAm'],
     pdfLink: '/docs/streaming-cultural.pdf',
+    preview: '/previews/projects/idilio-streaming-cultural.jpg',
     accentColor: '#EC4899',
     patterns: ['latam-real'],
   },
@@ -313,6 +317,31 @@ export function Projects() {
               {/* Vista previa en vivo del sitio */}
               {project.preview && project.link && (
                 <LivePreview href={project.link} poster={project.preview} />
+              )}
+
+              {/* Portada del PDF (casos de estudio) */}
+              {project.preview && project.pdfLink && !project.link && (
+                <a
+                  href={project.pdfLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  tabIndex={-1}
+                  aria-hidden="true"
+                  className="relative block aspect-[16/10] overflow-hidden border border-border bg-white mb-5"
+                >
+                  <Image
+                    src={project.preview}
+                    alt=""
+                    width={800}
+                    height={1035}
+                    loading="lazy"
+                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div
+                    className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-black/25 to-transparent"
+                    aria-hidden="true"
+                  />
+                </a>
               )}
 
               {/* Title row */}
