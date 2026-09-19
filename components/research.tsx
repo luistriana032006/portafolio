@@ -26,6 +26,13 @@ const RESEARCH = [
       'Guía técnica completa para instalar y configurar OpenClaw en Ubuntu 24 — agentes autónomos de IA con integración a Telegram, múltiples modelos vía OpenRouter y búsqueda web en tiempo real con Gemini.',
     file: '/docs/openclaw-setup-ubuntu-luis-triana (1).pdf',
   },
+  {
+    index: '04',
+    title: 'Educación Tecnológica e Investigación en Colombia: Propuestas desde la Periferia',
+    description:
+      'Documento de política pública elaborado desde Socorro, Santander — propone separar tres niveles de formación en IA (usar, construir con y construir IA), créditos de cómputo en la nube, la figura del Investigador Independiente Asociado y una hoja de ruta a 4 años para que el talento fuera de las capitales no se quede sin acceso.',
+    file: '/docs/etapas-colombia-ia-first.pdf',
+  },
 ]
 
 const PET_SIZE = 140
