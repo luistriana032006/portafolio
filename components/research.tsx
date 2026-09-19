@@ -11,6 +11,7 @@ const RESEARCH = [
     description:
       'A formal policy document distributed to presidential candidates for Colombia\'s 2026 elections, proposing concrete AI governance actions.',
     file: '/docs/analisis-ia-colombia.pdf',
+    preview: '/docs/previews/analisis-ia-colombia.jpg',
   },
   {
     index: '02',
@@ -18,20 +19,15 @@ const RESEARCH = [
     description:
       'Reflexión personal sobre lo que cuesta aprender tecnología viniendo de una educación formal en Colombia — y todo lo que hay que desaprender en el camino.',
     file: '/docs/analisis-educacion-colombia.pdf',
+    preview: '/docs/previews/analisis-educacion-colombia.jpg',
   },
   {
     index: '03',
-    title: 'OpenClaw Setup on Ubuntu',
-    description:
-      'Guía técnica completa para instalar y configurar OpenClaw en Ubuntu 24 — agentes autónomos de IA con integración a Telegram, múltiples modelos vía OpenRouter y búsqueda web en tiempo real con Gemini.',
-    file: '/docs/openclaw-setup-ubuntu-luis-triana (1).pdf',
-  },
-  {
-    index: '04',
     title: 'Educación Tecnológica e Investigación en Colombia: Propuestas desde la Periferia',
     description:
       'Documento de política pública elaborado desde Socorro, Santander — propone separar tres niveles de formación en IA (usar, construir con y construir IA), créditos de cómputo en la nube, la figura del Investigador Independiente Asociado y una hoja de ruta a 4 años para que el talento fuera de las capitales no se quede sin acceso.',
     file: '/docs/etapas-colombia-ia-first.pdf',
+    preview: '/docs/previews/etapas-colombia-ia-first.jpg',
   },
 ]
 
@@ -135,6 +131,27 @@ export function Research() {
               className="card-hover group relative flex flex-col border border-border bg-card p-6"
             >
               <span className="font-mono text-xs text-muted-foreground/40 mb-4">{item.index}</span>
+              <a
+                href={item.file}
+                target="_blank"
+                rel="noopener noreferrer"
+                tabIndex={-1}
+                aria-hidden="true"
+                className="relative block aspect-[4/3] overflow-hidden border border-border bg-white mb-5"
+              >
+                <Image
+                  src={item.preview}
+                  alt=""
+                  width={800}
+                  height={1132}
+                  loading="lazy"
+                  className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                />
+                <div
+                  className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-black/25 to-transparent"
+                  aria-hidden="true"
+                />
+              </a>
               <h3 className="font-sans font-bold text-lg text-foreground leading-tight mb-4">
                 {item.title}
               </h3>
