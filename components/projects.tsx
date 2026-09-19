@@ -1,6 +1,7 @@
 'use client'
 
 import { Check, FileText, Globe, Sparkles } from 'lucide-react'
+import { LivePreview } from './live-preview'
 import { useState } from 'react'
 
 type ProjectType = 'deployed' | 'case-study'
@@ -17,6 +18,7 @@ const PROJECTS: Array<{
   stat?: string | null
   inDev?: boolean
   pdfLink?: string
+  preview?: string
   accentColor?: string
   patterns?: QualityKey[]
 }> = [
@@ -55,6 +57,7 @@ const PROJECTS: Array<{
       'Sistema de Liquidación de Aportes a Seguridad Social — REST API en Spring Boot para cálculo de contribuciones al sistema de seguridad social colombiano. Presentado a Aportes en Línea.',
     tags: ['Java', 'Spring Boot', 'REST API', 'Colombia'],
     link: 'https://slas.luistriana.dev/',
+    preview: '/previews/projects/slas.jpg',
     repoLink: 'https://github.com/luistriana032006/slas-sistema-de-liquidacion-de-aportes',
     stat: 'Presentado a Aportes en Línea',
     inDev: false,
@@ -83,6 +86,7 @@ const PROJECTS: Array<{
       'Dashboard de operaciones de contenido para una media company de LatAm — genera contenido con APIs de IA para creación de contenido, con aprobación humana en cada paso antes de publicar.',
     tags: ['Next.js', 'Operaciones de Contenido', 'Kanban', 'Producto'],
     link: 'https://propuesta30x.luistriana.dev/',
+    preview: '/previews/projects/salon-de-contenido.jpg',
     repoLink: null,
     stat: 'Propuesta interna · 30X',
     inDev: false,
@@ -119,6 +123,7 @@ const PROJECTS: Array<{
       'Editor de escritorio para tomar apuntes técnicos sin LaTeX — símbolos matemáticos con clics, planos cartesianos, KaTeX en tiempo real y exportación a PDF/Word/Excel/PowerPoint. Gratis, local, sin telemetría. Código abierto.',
     tags: ['Electron', 'React', 'TypeScript', 'TipTap', 'KaTeX'],
     link: 'https://helecho.luistriana.dev',
+    preview: '/previews/projects/helecho.jpg',
     repoLink: 'https://github.com/luistriana032006/Helecho',
     stat: 'Open Source',
     inDev: false,
@@ -304,6 +309,11 @@ export function Projects() {
             >
               {/* Index */}
               <span className="font-mono text-xs text-muted-foreground/40 mb-4">{project.index}</span>
+
+              {/* Vista previa en vivo del sitio */}
+              {project.preview && project.link && (
+                <LivePreview href={project.link} poster={project.preview} />
+              )}
 
               {/* Title row */}
               <div className="flex items-start justify-between gap-2 mb-4">
