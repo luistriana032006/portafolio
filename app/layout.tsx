@@ -14,11 +14,16 @@ const jetbrainsMono = JetBrains_Mono({
   variable: '--font-mono',
 })
 
+const TITLE = 'Luis Miguel Triana Rueda — Software Engineer & ML Student'
+const DESCRIPTION =
+  'Ingeniero de software y estudiante de ML Engineering en Colombia. IA aplicada a negocios reales de LatAm: trazable, con humano en el loop y local-first. Práctica QA Automation en Rappi · GCI World (U. Tokyo) · MBZUAI 2027.'
+
 export const metadata: Metadata = {
-  title: 'Luis Miguel Triana Rueda — Software Engineer & ML Student',
-  description:
-    'Portfolio de Luis Miguel Triana Rueda, Ingeniero de Software y estudiante de ML Engineering. Construyendo IA para agricultura colombiana. MBZUAI 2027.',
-  keywords: ['Luis Miguel Triana Rueda', 'Luis Triana', 'Software Engineer', 'ML Engineering', 'Colombia', 'MBZUAI', 'AI', 'Java', 'Python', 'FastAPI'],
+  metadataBase: new URL('https://luistriana.dev'),
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: '/' },
+  authors: [{ name: 'Luis Miguel Triana Rueda', url: 'https://luistriana.dev' }],
   robots: {
     index: true,
     follow: true,
@@ -28,17 +33,34 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'Luis Miguel Triana Rueda — Software Engineer & ML Student',
-    description: 'Portfolio de Luis Miguel Triana Rueda, construyendo IA para agricultura colombiana.',
+    title: TITLE,
+    description: DESCRIPTION,
     type: 'website',
     url: 'https://luistriana.dev',
     siteName: 'Luis Miguel Triana Rueda',
+    locale: 'es_CO',
   },
   twitter: {
-    card: 'summary',
-    title: 'Luis Miguel Triana Rueda — Software Engineer & ML Student',
-    description: 'Portfolio de Luis Miguel Triana Rueda, construyendo IA para agricultura colombiana.',
+    card: 'summary_large_image',
+    title: TITLE,
+    description: DESCRIPTION,
   },
+}
+
+const PERSON_JSON_LD = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Luis Miguel Triana Rueda',
+  url: 'https://luistriana.dev',
+  jobTitle: 'Software Engineer & ML Engineering Student',
+  description: DESCRIPTION,
+  address: { '@type': 'PostalAddress', addressLocality: 'Socorro', addressRegion: 'Santander', addressCountry: 'CO' },
+  alumniOf: [{ '@type': 'CollegeOrUniversity', name: 'Corporación Universitaria Iberoamericana' }],
+  knowsAbout: ['Machine Learning', 'Software Engineering', 'Java', 'Spring Boot', 'Python', 'FastAPI', 'QA Automation'],
+  sameAs: [
+    'https://github.com/luistriana032006',
+    'https://www.linkedin.com/in/luis-miguel-triana-rueda-2917202a2',
+  ],
 }
 
 export default function RootLayout({
@@ -49,6 +71,10 @@ export default function RootLayout({
   return (
     <html lang="es" className="dark">
       <body className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(PERSON_JSON_LD) }}
+        />
         {/* Google Analytics (GA4) */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-P54CK4K0TC"

@@ -4,9 +4,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: 'https://luistriana.dev',
-      lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 1,
+    },
+    {
+      url: 'https://luistriana.dev/tutoriales',
+      changeFrequency: 'monthly',
+      priority: 0.6,
     },
   ]
 }

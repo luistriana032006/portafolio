@@ -5,6 +5,7 @@ import { Tutorials } from '@/components/tutorials'
 export const metadata: Metadata = {
   title: 'Tutoriales — Luis Miguel Triana Rueda',
   description: 'Tutoriales, análisis de datos con Jupyter y apuntes de ML Engineering por Luis Miguel Triana Rueda.',
+  alternates: { canonical: '/tutoriales' },
 }
 
 export default function TutorialesPage() {

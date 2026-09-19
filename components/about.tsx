@@ -35,8 +35,9 @@ export function About() {
               Java/Spring Boot a más de 220 estudiantes.
             </p>
             <p className="font-sans text-base leading-relaxed text-muted-foreground mb-8">
-              Hoy construyo herramientas de IA y tengo como meta el Master's en ML Engineering en MBZUAI,
-              Dubai — 2027.
+              Hoy hago mi práctica SENA como QA Automation en Rappi, y eso define cómo construyo IA:
+              sistemas trazables, con humano en el loop y verificables. Mi meta es el Master's en ML
+              Engineering en MBZUAI, Dubai — 2027.
             </p>
           </div>
         </div>

@@ -12,6 +12,12 @@ const MILESTONES = [
     highlight: false,
   },
   {
+    year: '2026 · Actual',
+    event: 'Práctica SENA — QA Automation · Rappi',
+    detail: 'Automatización de pruebas de software en Rappi como etapa práctica del Técnico SENA. Ahí aprendo que un sistema vale lo que vale su verificación — la misma exigencia con la que construyo IA.',
+    highlight: true,
+  },
+  {
     year: '2026',
     event: 'Graduado SENA — En proceso',
     detail: 'Técnico en desarrollo de software por el SENA. Graduación estimada: 2026.',
@@ -32,7 +38,7 @@ const MILESTONES = [
   {
     year: '2028',
     event: 'Ingeniero en Desarrollo de Software — Iberoamericana',
-    detail: 'Grado en Ingeniería en Desarrollo de Software · Corporación Universitaria Iberoamericana. Actualmente en 4to semestre, modalidad virtual.',
+    detail: 'Grado en Ingeniería en Desarrollo de Software · Corporación Universitaria Iberoamericana. Actualmente en 5to semestre, modalidad virtual.',
     highlight: true,
   },
 ]

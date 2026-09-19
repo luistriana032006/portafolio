@@ -89,7 +89,8 @@ export function Hero() {
         {/* Typewriter */}
         <div className="h-10 md:h-12 flex items-center justify-center mb-8">
           <p className="font-mono text-lg md:text-2xl text-muted-foreground">
-            <span className="text-foreground">{typewritten}</span>
+            <span className="sr-only">{ROLES.join(' · ')}</span>
+            <span className="text-foreground" aria-hidden="true">{typewritten}</span>
             <span className="cursor-blink text-primary ml-0.5">|</span>
           </p>
         </div>
