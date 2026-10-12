@@ -6,6 +6,7 @@ import { Projects } from '@/components/projects'
 import { Research } from '@/components/research'
 import { Timeline } from '@/components/timeline'
 import { Contact } from '@/components/contact'
+import { MascotGuide } from '@/components/mascot-guide'
 
 export default function Page() {
   return (
@@ -18,6 +19,7 @@ export default function Page() {
       <Research />
       <Timeline />
       <Contact />
+      <MascotGuide />
     </main>
   )
 }

@@ -2,8 +2,14 @@
 
 import { Check, FileText, Globe, Sparkles } from 'lucide-react'
 import Image from 'next/image'
+import { AnimatePresence, motion } from 'motion/react'
 import { LivePreview } from './live-preview'
+import { RepoPreview } from './repo-preview'
+import { REPO_PREVIEWS } from '@/lib/repo-previews'
 import { useState } from 'react'
+import { EASE_OUT, Reveal, SectionLabel } from './reveal'
+import { TiltCard, hexToRgb } from './tilt-card'
+import { SectionWatermark } from './section-watermark'
 
 type ProjectType = 'deployed' | 'case-study'
 type QualityKey = 'human-loop' | 'local-first' | 'latam-real'
@@ -205,259 +211,291 @@ export function Projects() {
   })
 
   return (
-    <section id="proyectos" className="py-24 md:py-32 border-t border-border bg-card">
+    <section id="proyectos" className="relative isolate overflow-hidden py-24 md:py-32 border-t border-border bg-card/50">
+      <SectionWatermark index="03" side="right" />
       <div className="w-full px-6 lg:px-10 xl:px-16">
-        {/* Section label */}
-        <div className="flex items-center gap-4 mb-12">
-          <span className="font-mono text-primary text-sm tracking-widest uppercase">03</span>
-          <div className="flex-1 h-px bg-border" />
-          <span className="font-mono text-muted-foreground text-xs tracking-widest uppercase">Proyectos Destacados</span>
-        </div>
+        <SectionLabel index="03" label="Proyectos Destacados" />
 
-        <h2 className="font-sans font-bold text-3xl md:text-4xl text-foreground text-balance leading-tight mb-10">
-          Cosas que he
-          <span className="text-primary"> construido</span>
-        </h2>
+        <Reveal>
+          <h2 className="font-sans font-bold text-3xl md:text-4xl text-foreground text-balance leading-tight mb-10">
+            Cosas que he
+            <span className="text-primary"> construido</span>
+          </h2>
+        </Reveal>
 
-        {/* Tabs de filtro por tipo */}
-        <div className="flex flex-wrap gap-2 mb-6" role="tablist" aria-label="Filtrar proyectos por tipo">
-          {FILTERS.map((f) => {
-            const count = f.key === 'all' ? PROJECTS.length : PROJECTS.filter((p) => p.type === f.key).length
-            const active = filter === f.key
-            return (
-              <button
-                key={f.key}
-                type="button"
-                role="tab"
-                aria-selected={active}
-                onClick={() => setFilter(f.key)}
-                className={`font-mono text-xs tracking-widest uppercase px-3.5 py-2 border transition-colors ${
-                  active
-                    ? 'text-primary border-primary/40 bg-primary/10'
-                    : 'text-muted-foreground border-border bg-secondary hover:text-foreground hover:border-foreground/40'
-                }`}
-              >
-                {f.label} <span className="opacity-60">({count})</span>
-              </button>
-            )
-          })}
-        </div>
+        <Reveal delay={0.1}>
 
-        {/* Filtro por cualidad */}
-        <div className="inline-flex items-center gap-2 border border-primary/30 bg-primary/5 px-4 py-2.5 mb-4">
-          <Sparkles size={14} className="text-primary shrink-0" aria-hidden="true" />
-          <span className="font-mono text-xs text-primary tracking-wide">
-            Filtra según la cualidad que quieras ver
-          </span>
-        </div>
-
-        <div
-          className="flex flex-wrap items-center gap-2 mb-12"
-          role="group"
-          aria-label="Filtrar proyectos por cualidad"
-        >
-          {QUALITIES.map((q) => {
-            const active = activeQualities.includes(q.key)
-            const count = PROJECTS.filter((p) => p.patterns?.includes(q.key)).length
-            return (
-              <button
-                key={q.key}
-                type="button"
-                role="checkbox"
-                aria-checked={active}
-                onClick={() => toggleQuality(q.key)}
-                className={`inline-flex items-center gap-2 font-mono text-xs tracking-wide px-3.5 py-2 border transition-colors ${
-                  active
-                    ? 'text-primary border-primary/50 bg-primary/10'
-                    : 'text-muted-foreground border-border bg-secondary hover:text-foreground hover:border-foreground/40'
-                }`}
-              >
-                <span
-                  className={`flex items-center justify-center w-3.5 h-3.5 border shrink-0 ${
-                    active ? 'border-primary bg-primary' : 'border-muted-foreground/40'
+          {/* Tabs de filtro por tipo */}
+          <div className="relative isolate flex flex-wrap gap-2 mb-6" role="tablist" aria-label="Filtrar proyectos por tipo">
+            {FILTERS.map((f) => {
+              const count = f.key === 'all' ? PROJECTS.length : PROJECTS.filter((p) => p.type === f.key).length
+              const active = filter === f.key
+              return (
+                <button
+                  key={f.key}
+                  type="button"
+                  role="tab"
+                  aria-selected={active}
+                  onClick={() => setFilter(f.key)}
+                  className={`relative font-mono text-xs tracking-widest uppercase px-3.5 py-2 border transition-colors ${
+                    active
+                      ? 'text-primary border-primary/40'
+                      : 'text-muted-foreground border-border bg-secondary hover:text-foreground hover:border-foreground/40'
                   }`}
-                  aria-hidden="true"
                 >
-                  {active && <Check size={10} className="text-background" strokeWidth={3} />}
-                </span>
-                {q.label} <span className="opacity-60">({count})</span>
+                  {active && (
+                    <motion.span
+                      layoutId="project-filter"
+                      className="absolute inset-0 -z-10 bg-primary/10"
+                      transition={{ type: 'spring', stiffness: 400, damping: 34 }}
+                      aria-hidden="true"
+                    />
+                  )}
+                  {f.label} <span className="opacity-60">({count})</span>
+                </button>
+              )
+            })}
+          </div>
+
+          {/* Filtro por cualidad */}
+          <div className="inline-flex items-center gap-2 border border-primary/30 bg-primary/5 px-4 py-2.5 mb-4">
+            <Sparkles size={14} className="text-primary shrink-0" aria-hidden="true" />
+            <span className="font-mono text-xs text-primary tracking-wide">
+              Filtra según la cualidad que quieras ver
+            </span>
+          </div>
+
+          <div
+            className="flex flex-wrap items-center gap-2 mb-12"
+            role="group"
+            aria-label="Filtrar proyectos por cualidad"
+          >
+            {QUALITIES.map((q) => {
+              const active = activeQualities.includes(q.key)
+              const count = PROJECTS.filter((p) => p.patterns?.includes(q.key)).length
+              return (
+                <button
+                  key={q.key}
+                  type="button"
+                  role="checkbox"
+                  aria-checked={active}
+                  onClick={() => toggleQuality(q.key)}
+                  className={`inline-flex items-center gap-2 font-mono text-xs tracking-wide px-3.5 py-2 border transition-colors ${
+                    active
+                      ? 'text-primary border-primary/50 bg-primary/10'
+                      : 'text-muted-foreground border-border bg-secondary hover:text-foreground hover:border-foreground/40'
+                  }`}
+                >
+                  <span
+                    className={`flex items-center justify-center w-3.5 h-3.5 border shrink-0 ${
+                      active ? 'border-primary bg-primary' : 'border-muted-foreground/40'
+                    }`}
+                    aria-hidden="true"
+                  >
+                    {active && <Check size={10} className="text-background" strokeWidth={3} />}
+                  </span>
+                  {q.label} <span className="opacity-60">({count})</span>
+                </button>
+              )
+            })}
+            {activeQualities.length > 0 && (
+              <button
+                type="button"
+                onClick={() => setActiveQualities([])}
+                className="font-mono text-xs text-muted-foreground underline underline-offset-2 hover:text-foreground px-2 py-2"
+              >
+                Limpiar
               </button>
-            )
-          })}
-          {activeQualities.length > 0 && (
-            <button
-              type="button"
-              onClick={() => setActiveQualities([])}
-              className="font-mono text-xs text-muted-foreground underline underline-offset-2 hover:text-foreground px-2 py-2"
-            >
-              Limpiar
-            </button>
-          )}
-        </div>
+            )}
+          </div>
+        </Reveal>
 
         <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-stretch">
-          {filteredProjects.map((project) => (
-            <article
-              key={project.index}
-              className={`card-hover group relative flex flex-col border border-border bg-background p-6${
-                project.accentColor ? ' card-hover--accent' : ''
-              }`}
-              style={
-                project.accentColor
-                  ? ({
-                      '--accent-border-color': project.accentColor,
-                      '--accent-glow-color': hexToRgba(project.accentColor, 0.18),
-                    } as React.CSSProperties)
-                  : undefined
-              }
-            >
-              {/* Index */}
-              <span className="font-mono text-xs text-muted-foreground/40 mb-4">{project.index}</span>
-
-              {/* Vista previa en vivo del sitio */}
-              {project.preview && project.link && (
-                <LivePreview href={project.link} poster={project.preview} />
-              )}
-
-              {/* Portada del PDF (casos de estudio) */}
-              {project.preview && project.pdfLink && !project.link && (
-                <a
-                  href={project.pdfLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  tabIndex={-1}
-                  aria-hidden="true"
-                  className="relative block aspect-[16/10] overflow-hidden border border-border bg-white mb-5"
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.map((project, i) => (
+              <motion.div
+                key={project.index}
+                layout
+                initial={{ opacity: 0, y: 40, scale: 0.96 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.92, transition: { duration: 0.2 } }}
+                viewport={{ once: true, margin: '0px 0px -8% 0px' }}
+                transition={{ duration: 0.6, ease: EASE_OUT, delay: (i % 4) * 0.08, layout: { duration: 0.45, ease: EASE_OUT } }}
+                className="h-full"
+              >
+                <TiltCard
+                  glowRgb={project.accentColor ? hexToRgb(project.accentColor) : undefined}
+                  className={`card-glow h-full flex flex-col border border-border bg-background p-6${
+                    project.accentColor ? ' card-glow--accent' : ''
+                  }`}
+                  style={
+                    project.accentColor
+                      ? ({
+                          '--accent-border-color': project.accentColor,
+                          '--accent-glow-color': hexToRgba(project.accentColor, 0.18),
+                        } as React.CSSProperties)
+                      : undefined
+                  }
                 >
-                  <Image
-                    src={project.preview}
-                    alt=""
-                    width={800}
-                    height={1035}
-                    loading="lazy"
-                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div
-                    className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-black/25 to-transparent"
-                    aria-hidden="true"
-                  />
-                </a>
-              )}
+                  {/* Index */}
+                  <span className="font-mono text-xs text-muted-foreground/40 mb-4">{project.index}</span>
 
-              {/* Title row */}
-              <div className="flex items-start justify-between gap-2 mb-4">
-                <h3 className="font-sans font-bold text-lg text-foreground leading-tight">
-                  {project.name}
-                </h3>
-                {project.type === 'deployed' && (
-                  <div className="flex items-center gap-1.5 shrink-0">
-                    {project.repoLink && (
+                  {/* Vista previa en vivo del sitio */}
+                  {project.preview && project.link && (
+                    <LivePreview href={project.link} poster={project.preview} />
+                  )}
+
+                  {/* Ventana de editor con el código real (proyectos que solo tienen repo) */}
+                  {!project.preview && project.repoLink && REPO_PREVIEWS[project.index] && (
+                    <RepoPreview
+                      href={project.repoLink}
+                      data={REPO_PREVIEWS[project.index]}
+                      accent={project.accentColor ?? '#E8613A'}
+                    />
+                  )}
+
+                  {/* Portada del PDF (casos de estudio) */}
+                  {project.preview && project.pdfLink && !project.link && (
+                    <a
+                      href={project.pdfLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      tabIndex={-1}
+                      aria-hidden="true"
+                      className="relative block aspect-[16/10] overflow-hidden border border-border bg-white mb-5"
+                    >
+                      <Image
+                        src={project.preview}
+                        alt=""
+                        width={800}
+                        height={1035}
+                        loading="lazy"
+                        className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div
+                        className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-black/25 to-transparent"
+                        aria-hidden="true"
+                      />
+                    </a>
+                  )}
+
+                  {/* Title row */}
+                  <div className="flex items-start justify-between gap-2 mb-4">
+                    <h3 className="font-sans font-bold text-lg text-foreground leading-tight">
+                      {project.name}
+                    </h3>
+                    {project.type === 'deployed' && (
+                      <div className="flex items-center gap-1.5 shrink-0">
+                        {project.repoLink && (
+                          <a
+                            href={project.repoLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-primary transition-all duration-300 filter-[drop-shadow(0_0_6px_rgba(232,97,58,0.65))] hover:filter-[drop-shadow(0_0_14px_rgba(232,97,58,1))] hover:scale-110"
+                            aria-label={`Repositorio de ${project.name}`}
+                          >
+                            <GithubIcon size={22} />
+                          </a>
+                        )}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Description */}
+                  <p className="font-sans text-sm text-muted-foreground leading-relaxed mb-6 flex-1">
+                    {project.description}
+                  </p>
+
+                  {/* Badges row */}
+                  <div className="flex flex-wrap items-center gap-2 mb-5">
+                    {project.type === 'case-study' && (
+                      <span className="font-mono text-xs text-primary border border-primary/30 bg-primary/10 px-2.5 py-1">
+                        Caso de estudio
+                      </span>
+                    )}
+                    {project.inDev && (
+                      <span className="font-mono text-xs text-amber-400 border border-amber-400/30 bg-amber-400/10 px-2.5 py-1">
+                        En desarrollo
+                      </span>
+                    )}
+                    {project.stat && (
+                      <span className="font-mono text-xs text-primary border border-primary/30 bg-primary/10 px-2.5 py-1">
+                        {project.stat}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Cualidades */}
+                  {project.patterns && project.patterns.length > 0 && (
+                    <div className="flex flex-wrap gap-1.5 mb-5">
+                      {project.patterns.map((key) => {
+                        const quality = QUALITIES.find((q) => q.key === key)
+                        if (!quality) return null
+                        const highlighted = activeQualities.includes(key)
+                        return (
+                          <span
+                            key={key}
+                            className={`font-mono text-[11px] px-2 py-0.5 border tracking-wide transition-colors ${
+                              highlighted
+                                ? 'text-primary border-primary/50 bg-primary/10'
+                                : 'text-muted-foreground/80 border-border/70'
+                            }`}
+                          >
+                            {quality.label}
+                          </span>
+                        )
+                      })}
+                    </div>
+                  )}
+
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-1.5">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="font-mono text-[11px] text-muted-foreground border border-border bg-secondary px-2 py-0.5 uppercase tracking-wide"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Acciones */}
+                  <div className="flex flex-wrap gap-2 self-start mt-5">
+                    {project.type === 'case-study' && project.pdfLink && (
                       <a
-                        href={project.repoLink}
+                        href={project.pdfLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-primary transition-all duration-300 filter-[drop-shadow(0_0_6px_rgba(232,97,58,0.65))] hover:filter-[drop-shadow(0_0_14px_rgba(232,97,58,1))] hover:scale-110"
-                        aria-label={`Repositorio de ${project.name}`}
+                        className="inline-flex items-center gap-2 font-mono text-xs text-primary border border-primary/40 bg-primary/5 hover:bg-primary/10 hover:border-primary/60 transition-colors px-4 py-2"
                       >
-                        <GithubIcon size={22} />
+                        <FileText size={13} />
+                        Ver propuesta
+                      </a>
+                    )}
+                    {project.type === 'deployed' && project.link && (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 font-mono text-xs text-primary border border-primary/40 bg-primary/5 hover:bg-primary/10 hover:border-primary/60 transition-colors px-4 py-2"
+                      >
+                        <Globe size={13} />
+                        Ver en el navegador
                       </a>
                     )}
                   </div>
-                )}
-              </div>
 
-              {/* Description */}
-              <p className="font-sans text-sm text-muted-foreground leading-relaxed mb-6 flex-1">
-                {project.description}
-              </p>
-
-              {/* Badges row */}
-              <div className="flex flex-wrap items-center gap-2 mb-5">
-                {project.type === 'case-study' && (
-                  <span className="font-mono text-xs text-primary border border-primary/30 bg-primary/10 px-2.5 py-1">
-                    Caso de estudio
-                  </span>
-                )}
-                {project.inDev && (
-                  <span className="font-mono text-xs text-amber-400 border border-amber-400/30 bg-amber-400/10 px-2.5 py-1">
-                    En desarrollo
-                  </span>
-                )}
-                {project.stat && (
-                  <span className="font-mono text-xs text-primary border border-primary/30 bg-primary/10 px-2.5 py-1">
-                    {project.stat}
-                  </span>
-                )}
-              </div>
-
-              {/* Cualidades */}
-              {project.patterns && project.patterns.length > 0 && (
-                <div className="flex flex-wrap gap-1.5 mb-5">
-                  {project.patterns.map((key) => {
-                    const quality = QUALITIES.find((q) => q.key === key)
-                    if (!quality) return null
-                    const highlighted = activeQualities.includes(key)
-                    return (
-                      <span
-                        key={key}
-                        className={`font-mono text-[11px] px-2 py-0.5 border tracking-wide transition-colors ${
-                          highlighted
-                            ? 'text-primary border-primary/50 bg-primary/10'
-                            : 'text-muted-foreground/80 border-border/70'
-                        }`}
-                      >
-                        {quality.label}
-                      </span>
-                    )
-                  })}
-                </div>
-              )}
-
-              {/* Tags */}
-              <div className="flex flex-wrap gap-1.5">
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="font-mono text-[11px] text-muted-foreground border border-border bg-secondary px-2 py-0.5 uppercase tracking-wide"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              {/* Acciones */}
-              <div className="flex flex-wrap gap-2 self-start mt-5">
-                {project.type === 'case-study' && project.pdfLink && (
-                  <a
-                    href={project.pdfLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 font-mono text-xs text-primary border border-primary/40 bg-primary/5 hover:bg-primary/10 hover:border-primary/60 transition-colors px-4 py-2"
-                  >
-                    <FileText size={13} />
-                    Ver propuesta
-                  </a>
-                )}
-                {project.type === 'deployed' && project.link && (
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 font-mono text-xs text-primary border border-primary/40 bg-primary/5 hover:bg-primary/10 hover:border-primary/60 transition-colors px-4 py-2"
-                  >
-                    <Globe size={13} />
-                    Ver en el navegador
-                  </a>
-                )}
-              </div>
-
-              {/* Hover accent line */}
-              <div
-                className="absolute bottom-0 left-0 h-0.5 w-0 bg-primary transition-all duration-300 group-hover:w-full"
-                aria-hidden="true"
-              />
-            </article>
-          ))}
+                  {/* Hover accent line */}
+                  <div
+                    className="absolute bottom-0 left-0 h-0.5 w-0 transition-all duration-300 group-hover:w-full"
+                    style={{ backgroundColor: project.accentColor ?? 'var(--primary)' }}
+                    aria-hidden="true"
+                  />
+                </TiltCard>
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </div>
       </div>
     </section>

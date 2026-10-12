@@ -1,6 +1,6 @@
 export function Tutorials() {
   return (
-    <section id="tutoriales" className="py-24 md:py-32 border-t border-border bg-background">
+    <section id="tutoriales" className="py-24 md:py-32 border-t border-border">
       <div className="max-w-5xl mx-auto px-6">
 
         {/* Section label */}

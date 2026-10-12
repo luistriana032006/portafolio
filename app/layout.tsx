@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Space_Grotesk, JetBrains_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import Script from 'next/script'
+import { MotionProvider } from '@/components/motion-provider'
 import './globals.css'
 
 const spaceGrotesk = Space_Grotesk({
@@ -116,7 +117,7 @@ export default function RootLayout({
           />
         </noscript>
         {/* End Meta Pixel Code */}
-        {children}
+        <MotionProvider>{children}</MotionProvider>
         <Analytics />
       </body>
     </html>
